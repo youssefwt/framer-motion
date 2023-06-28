@@ -19,6 +19,7 @@ const Header = () => {
             <motion.div className="title"
                 initial={{ y: -250 }}
                 animate={{ y: 0 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 120 }} // the default type of this animation is spring, stiffness can only be used with spring
             >
                 <h1>Pizza Joint</h1>
             </motion.div>
