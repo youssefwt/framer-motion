@@ -13,7 +13,9 @@ const Home = () => {
                 Welcome to Pizza Joint
             </motion.h2>
             <Link to="/base">
-                <motion.button animate={{}}>
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                >
                     Create Your Pizza
                 </motion.button>
             </Link>
