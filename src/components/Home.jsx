@@ -1,7 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
+const buttonVarients = {
+    // visible: {
+    //     x: [0, -20, 20, -20, 20, 0], //key frames
+    //     transition: { delay: 2 }
+    // },
+    hover: {
+        scale: 1.1,
+        textShadow: "0px 0px 8px rgb(255,255,255)",
+        boxShadow: "0px 0px 8px rgb(255,255,255)",
+        transition: {
+            repeat: Infinity, repeatType: "mirror" // accepts 3 values
+        }
+    }
+}
 const Home = () => {
     return (
         <motion.div className="home container"
@@ -14,7 +27,9 @@ const Home = () => {
             </motion.h2>
             <Link to="/base">
                 <motion.button
-                    whileHover={{ scale: 1.1 }}
+                    variants={buttonVarients}
+                    // animate="visible"
+                    whileHover="hover"
                 >
                     Create Your Pizza
                 </motion.button>
