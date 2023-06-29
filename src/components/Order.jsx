@@ -14,7 +14,7 @@ const containerVarients = {
             mass: 0.4,//the lower the quicker it moves
             damping: 8,
             // duration: 1,
-            // delay: 0.5,
+            delay: 0.5,
             // stiffness: 90,
             when: "beforeChildren",
             staggerChildren: 0.4
