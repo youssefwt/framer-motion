@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 const buttonVarients = {
     // visible: {
     //     x: [0, -20, 20, -20, 20, 0], //key frames
@@ -16,15 +16,20 @@ const buttonVarients = {
     }
 }
 const Home = () => {
+    const [showTitle, setShowTitle] = useState(true)
+    setTimeout(() => setShowTitle(false), 3000)
     return (
         <motion.div className="home container"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 3 }} // the default type of this is asnimation tween, duration can only be used with tween
         >
-            <motion.h2 animate={{}}>
-                Welcome to Pizza Joint
-            </motion.h2>
+            <AnimatePresence>
+                {showTitle &&
+                    <motion.h2 exit={{ y: "-1000px" }} >
+                        Welcome to Pizza Joint
+                    </motion.h2>}
+            </AnimatePresence>
             <Link to="/base">
                 <motion.button
                     variants={buttonVarients}
