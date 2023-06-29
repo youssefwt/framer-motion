@@ -2,14 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+const containerVarients = {
+    hidden: {
+        opacity: 0,
+        x: "100vw"
+    },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: { type: "spring", duration: 1, delay: 0.5, stiffness: 90 }
+    }
+}
+
+const nextVarients = {
+    hidden: { x: "-100vw" },
+    visible: { x: 0, transition: { type: "spring", stiffness: 120 } }
+}
+
 const Base = ({ addBase, pizza }) => {
     const bases = ['Classic', 'Thin & Crispy', 'Thick Crust'];
 
     return (
         <motion.div className="base container"
-            initial={{ x: "100vw" }}
-            animate={{ x: 0 }}
-            transition={{ type: "spring", duration: 1, delay: 0.5, stiffness: 90 }}
+            // initial={{ x: "100vw" }}
+            // animate={{ x: 0 }}
+            initial="hidden" // looks for the "hidden" property
+            animate="visible"
+            variants={containerVarients} // look for the varients
+        // transition={{ type: "spring", duration: 1, delay: 0.5, stiffness: 90 }}
         >
 
             <h3>Step 1: Choose Your Base</h3>
@@ -28,9 +48,13 @@ const Base = ({ addBase, pizza }) => {
 
             {pizza.base && (
                 <motion.div className="next"
-                    initial={{ x: "-100vw" }}
-                    animate={{ x: 0 }}
-                    transition={{ type: "spring", stiffness: 120 }}
+                    // initial={{ x: "-100vw" }}
+                    // animate={{ x: 0 }}
+                    // transition={{ type: "spring", stiffness: 120 }}
+
+                    variants={nextVarients} // other thing varients allows is inherting porperties from parent motion DOM nodes, not inherting the varients it self, but using varients allows us to inhert initial and animate props with their values
+                // initial="hidden"
+                // animate="visible"
                 >
                     <Link to="/toppings">
                         <button>Next</button>
